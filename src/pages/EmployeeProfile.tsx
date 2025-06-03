@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase, Employee } from '../lib/supabase';
+import { supabase, Employee as DatabaseEmployee } from '../lib/supabase';
 import EmployeeCard from '../components/EmployeeCard';
 import ContactInfo from '../components/ContactInfo';
+import { Employee as ComponentEmployee } from '../components/EmployeeProfile';
 
 const EmployeeProfile = () => {
   const { id } = useParams<{ id: string }>();
-  const [employee, setEmployee] = useState<Employee | null>(null);
+  const [employee, setEmployee] = useState<ComponentEmployee | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +34,7 @@ const EmployeeProfile = () => {
         }
       } else {
         // Convert database format to component format
-        const employeeData: Employee = {
+        const employeeData: ComponentEmployee = {
           id: data.id,
           name: data.name,
           jobTitle: data.job_title,
