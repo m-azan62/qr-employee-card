@@ -1,14 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import EmployeeProfile from '../components/EmployeeProfile';
+import { Employee } from '../components/EmployeeProfile';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
+  // Sample employee data - in a real app this would come from an API or database
+  const sampleEmployee: Employee = {
+    id: "1",
+    name: "Sarah Johnson",
+    jobTitle: "Senior Software Engineer",
+    department: "Engineering",
+    phone: "+1 (555) 123-4567",
+    email: "sarah.johnson@company.com",
+    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b5e5?w=400&h=400&fit=crop&crop=face&auto=format&q=80"
+  };
+
+  return <EmployeeProfile employee={sampleEmployee} />;
 };
 
 export default Index;
